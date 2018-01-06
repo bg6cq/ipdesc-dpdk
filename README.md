@@ -16,7 +16,7 @@ ipdesc 程序基于GPL v3发布。
 
 ## 编译和运行
 
-请首先参照 [https://github.com/bg6cq/dpdk-simple-server](https://github.com/bg6cq/dpdk-simple-server)准备好DPDK环境
+请首先参照 [https://github.com/bg6cq/dpdk-simple-web](https://github.com/bg6cq/dpdk-simple-web)准备好DPDK环境
 
 ```
 cd /usr/src
