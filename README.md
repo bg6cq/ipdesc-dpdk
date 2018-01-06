@@ -20,9 +20,13 @@ ipdesc 程序基于GPL v3发布。
 cd /usr/src
 git clone https://github.com/bg6cq/ipdesc-dpdk
 cd ipdesc-dpdk
+git submodule update --checkout
 source env_var
 make
+
 自行下载 http://ipip.net 的免费版 17monipdb.dat
+
+#运行
 build/ipdesc-dpdk -c1 -n1 x.x.x.x 80 
 ```
 
