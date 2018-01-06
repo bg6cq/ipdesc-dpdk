@@ -22,6 +22,7 @@ ipdesc 程序基于GPL v3发布。
 cd /usr/src
 git clone https://github.com/bg6cq/ipdesc-dpdk
 cd ipdesc-dpdk
+git submodule init
 git submodule update --checkout
 source env_vars
 make

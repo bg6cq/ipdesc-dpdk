@@ -70,7 +70,7 @@ static inline int process_http(struct ipv4_hdr *iph __attribute__ ((unused)), st
 			       "%s%s\r\n", http_head,
 			       "使用方式: <br>http://serverip/ 显示本机IP地址和信息<br>http://serverip/IP地址 显示IP地址的信息<p>"
 			       "IP地址数据库来自<a href=http://ipip.net>http://ipip.net</a>免费版，最后更新时间20180101<br>"
-			       "感谢北京天特信科技有限公司<p>https://github.com/bg6cq/ipdesc-dpdk<br>james@ustc.edu.cn 2017.12.09");
+			       "感谢北京天特信科技有限公司<p><a href=https://github.com/bg6cq/ipdesc-dpdk>https://github.com/bg6cq/ipdesc-dpdk</a><br>james@ustc.edu.cn 2018.01.06");
 	if (len < *resp_len)
 		*resp_len = len;
 #ifdef DEBUGHTTP
