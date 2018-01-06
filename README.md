@@ -21,7 +21,7 @@ cd /usr/src
 git clone https://github.com/bg6cq/ipdesc-dpdk
 cd ipdesc-dpdk
 git submodule update --checkout
-source env_var
+source env_vars
 make
 
 自行下载 http://ipip.net 的免费版 17monipdb.dat
