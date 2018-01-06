@@ -17,7 +17,7 @@ static inline int user_init_func(int argc __attribute__ ((unused)), char *argv[]
 {
 	printf("user_init_func: argc=%d\n", argc);
 	if (init("17monipdb.dat") != 1) {
-		printf("init 17monipdb.dat error");
+		printf("init 17monipdb.dat error, do you put 17monipdb.dat in current dir?\n");
 		exit(-1);
 	}
 	return 0;
