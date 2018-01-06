@@ -10,7 +10,7 @@
 #define MAXLEN 1024
 
 const char *http_head =
-    "HTTP/1.0 200 OK\r\nConnection: close\r\nContent-Type: text/html; charset=UTF-8\r\nServer: web server by james@ustc.edu.cn, data from ipip.net\r\n\r\n";
+    "HTTP/1.0 200 OK\r\nConnection: close\r\nContent-Type: text/html; charset=UTF-8\r\nServer: dpdk web server by james@ustc.edu.cn, data from ipip.net\r\n\r\n";
 
 static inline int user_init_func(int argc __attribute__ ((unused)), char *argv[]
 				 __attribute__ ((unused)))
@@ -23,7 +23,7 @@ static inline int user_init_func(int argc __attribute__ ((unused)), char *argv[]
 	return 0;
 }
 
-#define DEBUGHTTP
+// #define DEBUGHTTP
 
 static inline int process_http(struct ipv4_hdr *iph __attribute__ ((unused)), struct tcp_hdr *tcph
 			       __attribute__ ((unused)), unsigned char *http_req
@@ -70,7 +70,7 @@ static inline int process_http(struct ipv4_hdr *iph __attribute__ ((unused)), st
 			       "%s%s\r\n", http_head,
 			       "使用方式: <br>http://serverip/ 显示本机IP地址和信息<br>http://serverip/IP地址 显示IP地址的信息<p>"
 			       "IP地址数据库来自<a href=http://ipip.net>http://ipip.net</a>免费版，最后更新时间20180101<br>"
-			       "感谢北京天特信科技有限公司<p>https://github.com/bg6cq/ipdesc<br>james@ustc.edu.cn 2017.12.09");
+			       "感谢北京天特信科技有限公司<p>https://github.com/bg6cq/ipdesc-dpdk<br>james@ustc.edu.cn 2017.12.09");
 	if (len < *resp_len)
 		*resp_len = len;
 #ifdef DEBUGHTTP
