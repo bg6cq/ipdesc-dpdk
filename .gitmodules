@@ -1,0 +1,3 @@
+[submodule "dpdk-simple-web"]
+	path = dpdk-simple-web
+	url = https://github.com/bg6cq/dpdk-simple-web.git
