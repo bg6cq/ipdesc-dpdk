@@ -25,11 +25,12 @@ static inline int user_init_func(int argc __attribute__ ((unused)), char *argv[]
 
 // #define DEBUGHTTP
 
-static inline int process_http(struct ipv4_hdr *iph __attribute__ ((unused)), struct tcp_hdr *tcph
-			       __attribute__ ((unused)), unsigned char *http_req
-			       __attribute__ ((unused)), int req_len
-			       __attribute__ ((unused)), unsigned char *http_resp, int *resp_len,
-			       int *resp_in_req)
+static inline int process_http(int ip_version, void *iph __attribute__ ((unused)),
+			       struct tcp_hdr *tcph __attribute__ ((unused)),
+			       unsigned char *http_req __attribute__ ((unused)),
+			       int req_len __attribute__ ((unused)),
+			       unsigned char *http_resp __attribute__ ((unused)),
+			       int *resp_len, int *resp_in_req)
 {
 #ifdef DEBUGHTTP
 	printf("http req payload is: ");
@@ -55,8 +56,11 @@ static inline int process_http(struct ipv4_hdr *iph __attribute__ ((unused)), st
 		len = snprintf((char *)http_req, *resp_len,
 			       "HTTP/1.0 404 OK\r\nConnection: close\r\nContent-Type: text/html; charset=UTF-8\r\n\r\n");
 	else if (*(http_req + 5) == ' ') {	//   GET /, show ip and desc
-		const char *ip;
-		ip = INET_NTOA(iph->src_addr);
+		char ip[100];
+		if (ip_version == 4)
+			strncpy(ip, INET_NTOA(((struct ipv4_hdr *)iph)->src_addr), 20);
+		else
+			inet_ntop(AF_INET6, &((struct ipv6_hdr *)iph)->src_addr, ip, 100);
 		find(ip, result, 128);
 		len = snprintf((char *)http_req, *resp_len, "%s%s %s\r\n", http_head, ip, result);
 	} else if (*(http_req + 5) >= '0' && *(http_req + 5) <= '9') {	// GET /IP, show ip desc

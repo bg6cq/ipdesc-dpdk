@@ -7,6 +7,7 @@ ipdesc 程序基于GPL v3发布。
 特点：
 
 * 使用DPDK 框架，无限连接数
+* 支持IPv4/IPv6
 
 演示站点（请单击如下URL测试）：
 
@@ -30,6 +31,6 @@ make
 自行下载 http://ipip.net 的免费版 17monipdb.dat
 
 #运行
-build/ipdesc-dpdk -c1 -n1 x.x.x.x 80 
+build/ipdesc-dpdk -c1 -n1 x.x.x.x 80 [ --ip6 x:x:x::y ]
 ```
 
