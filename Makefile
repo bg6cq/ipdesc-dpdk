@@ -44,7 +44,9 @@ APP = ipdesc-dpdk
 # all source are stored in SRCS-y
 SRCS-y := ipdesc-dpdk.c
 
-CFLAGS += $(WERROR_FLAGS)
+GIT_VERSION := $(shell git describe --abbrev=4 --dirty --always --tags)
+
+CFLAGS += $(WERROR_FLAGS) -DVERSION=\"$(GIT_VERSION)\"
 
 # workaround for a gcc bug with noreturn attribute
 # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=12603
