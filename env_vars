@@ -1,1 +1,1 @@
-export RTE_SDK=/usr/src/dpdk-17.11
+export RTE_SDK=/usr/src/dpdk-18.02

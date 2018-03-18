@@ -17,8 +17,8 @@ static inline int user_init_func(int argc __attribute__ ((unused)), char *argv[]
 {
 	printf("user_init_func: argc=%d\n", argc);
 	printf("Version: %s\n", VERSION);
-	if (init("17monipdb.dat") != 1) {
-		printf("init 17monipdb.dat error, do you put 17monipdb.dat in current dir?\n");
+	if (init("17monipdb.datx") != 1) {
+		printf("init 17monipdb.datx error, do you put 17monipdb.datx in current dir?\n");
 		exit(-1);
 	}
 	return 0;
@@ -70,12 +70,17 @@ static inline int process_http(int ip_version, void *iph __attribute__ ((unused)
 			len = snprintf((char *)http_req, *resp_len, "%s%s\r\n", http_head, result);
 		else
 			len = snprintf((char *)http_req, *resp_len, "%sNULL\r\n", http_head);
-	} else
+	} else {
+		find("255.255.255.255", result, 128);
 		len = snprintf((char *)http_req, *resp_len,
-			       "%s%s\r\n", http_head,
-			       "使用方式: <br>http://serverip/ 显示本机IP地址和信息<br>http://serverip/IP地址 显示IP地址的信息<p>"
-			       "IP地址数据库来自<a href=http://ipip.net>http://ipip.net</a>免费版，最后更新时间20180101<br>"
-			       "感谢北京天特信科技有限公司<p><a href=https://github.com/bg6cq/ipdesc-dpdk>https://github.com/bg6cq/ipdesc-dpdk</a><br>james@ustc.edu.cn 2018.01.06");
+			"%s%s%s%s\r\n", http_head,
+			"使用方式: <p><table><tr><td><font color=blue>http://serverip/</font></td><td>显示本机IP地址和信息</td></tr>"
+			"<tr><td><font color=blue>http://serverip/IP地址</font></td><td>显示IP地址的信息</td></tr></table><p>"
+			"IP地址数据库来自 <a href=http://ipip.net>http://ipip.net</a> 免费版<p>"
+			"数据库版本: <font color=red>",
+			result,
+			"</font><p>感谢北京天特信科技有限公司<p>https://github.com/bg6cq/ipdesc<br>james@ustc.edu.cn 2018.03.18");
+	}
 	if (len < *resp_len)
 		*resp_len = len;
 #ifdef DEBUGHTTP
