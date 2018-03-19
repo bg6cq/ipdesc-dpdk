@@ -28,7 +28,7 @@ git submodule update --checkout
 source env_vars
 make
 
-自行下载 http://ipip.net 的免费版 17monipdb.dat
+自行下载 http://ipip.net 的免费版 17monipdb.datx
 
 #运行
 build/ipdesc-dpdk -c1 -n1 x.x.x.x 80 [ --ip6 x:x:x::y ]
