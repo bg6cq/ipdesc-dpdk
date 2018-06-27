@@ -79,7 +79,7 @@ static inline int process_http(int ip_version, void *iph __attribute__ ((unused)
 			"IP地址数据库来自 <a href=http://ipip.net>http://ipip.net</a> 免费版<p>"
 			"数据库版本: <font color=red>",
 			result,
-			"</font><p>感谢北京天特信科技有限公司<p>https://github.com/bg6cq/ipdesc<br>james@ustc.edu.cn 2018.03.18");
+			"</font><p>感谢北京天特信科技有限公司<p>https://github.com/bg6cq/ipdesc-dpdk<br>james@ustc.edu.cn 2018.03.18");
 	}
 	if (len < *resp_len)
 		*resp_len = len;
